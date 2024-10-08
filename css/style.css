@@ -1,0 +1,583 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos del cuerpo */
+body {
+  font-family: Roboto, sans-serif;
+}
+
+/* Header fijo */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #7c7c7c7e;
+  backdrop-filter: blur(15px);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+}
+/* Clase para aplicar el efecto de desenfoque */
+header.scrolled {
+  backdrop-filter: blur(5px);
+  background-color: rgba(
+    51,
+    51,
+    51,
+    0.8
+  ); /* Color de fondo semi-transparente */
+}
+
+/* Contenedor de logos */
+.logo-container {
+  display: flex;
+  margin-right: auto;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Estilos del menú */
+.menu {
+  position: relative;
+}
+#menu-links {
+  list-style: none; /* Eliminar los puntos */
+  padding: 0; /* Eliminar el padding predeterminado */
+  margin: 0; /* Eliminar el margin predeterminado */
+}
+
+#menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#menu-links li {
+  margin: 20px 0;
+}
+
+#menu-links a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+/* Mostrar el menú cuando esté activo */
+#menu-links.show {
+  display: block;
+}
+
+/* Estilos para el contenido */
+main {
+  margin-top: 80px; /* Para evitar que el contenido se solape con el header */
+  padding: 20px;
+  text-align: center;
+}
+/* Estilos para el menú */
+/* Estilos para el menú */
+#menu-links {
+  display: none;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  transition: 0.3s;
+  z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+/* Quitar los puntos del listado */
+#menu-links ul {
+  list-style: none;
+  padding: 0; /* Elimina el espacio de relleno en el listado */
+  margin: 0; /* Elimina el margen en el listado */
+}
+
+#menu-links.show {
+  display: flex;
+}
+
+#menu-links li {
+  margin: 20px 0;
+}
+
+#menu-links a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  position: relative; /* Necesario para el pseudo-elemento ::after */
+  padding-bottom: 5px; /* Añadir algo de espacio para la línea */
+}
+
+/* Estilo para la línea bajo el texto al hacer hover */
+#menu-links a::after {
+  content: ""; /* No muestra texto, solo es decorativo */
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #ffcc00; /* Cambia este color al que prefieras */
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+#menu-links a:hover {
+  color: aqua;
+}
+
+/* Cuando haces hover, la línea se expande */
+#menu-links a:hover::after {
+  width: 100%;
+}
+
+/* Estilo específico para el enlace de cerrar menú */
+#close-menu {
+  font-size: 20px;
+  color: red; /* Diferente color para destacar */
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  header {
+    padding: 10px;
+  }
+
+  #menu-toggle {
+    font-size: 32px;
+  }
+}
+/* Contenedor de la imagen */
+#image-container {
+  width: 100%;
+  height: 600px; /* Altura predeterminada */
+  background: linear-gradient(
+      to bottom,
+      rgba(4, 125, 255, 0),
+      rgba(255, 255, 255, 0),
+      rgba(0, 255, 204, 0),
+      rgba(10, 10, 10, 0.305)
+    ),
+    url(../img/fondo2.jpeg);
+  background-position: top; 
+  background-size: cover; 
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  #image-container {
+    height: 400px; /* Ajusta la altura para móviles */
+    background-attachment: scroll; /* Cambia a scroll para mejor rendimiento en móviles */
+  }
+}
+
+
+
+
+
+/* Título sobre la imagen */
+#image-title {
+  position: absolute;
+  top: 60px; /* Coloca el texto en la parte inferior de la imagen */
+  left: 0;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+  color: white;
+  text-align: center;
+  font-size: 32px; /* Tamaño del texto */
+  padding: 10px 0; /* Espaciado interno */
+}
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 3, 3, 0.568);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: row; /* Disposición horizontal */
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.bar {
+  width: 10px; /* Ancho de las barras */
+  height: 5%; /* Altura inicial para que sean más pequeñas */
+  margin: 0 5px; /* Espaciado horizontal entre barras */
+  border-radius: 5px;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+.red {
+  background-color: #ff4c4c;
+}
+
+.orange {
+  background-color: #ffb74d;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+.blue {
+  background-color: #2196f3;
+}
+
+.five {
+  background-color: rgb(166, 95, 233);
+}
+
+.bar:nth-child(1) {
+  animation-delay: 0s; /* Primera barra sin retraso */
+}
+
+.bar:nth-child(2) {
+  animation-delay: 0.2s; /* Segunda barra con retraso */
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.4s; /* Tercera barra con más retraso */
+}
+
+.bar:nth-child(4) {
+  animation-delay: 0.6s; /* Cuarta barra con aún más retraso */
+}
+
+.bar:nth-child(5) {
+  animation-delay: 0.8s; /* Quinta barra con retraso */
+}
+
+@keyframes loading {
+  0% {
+    height: 5%; /* Altura inicial */
+  }
+  50% {
+    height: 20%; /* Crece a un 20% en la mitad de la animación */
+  }
+  100% {
+    height: 5%; /* Regresa a 5% al final de la animación */
+  }
+}
+
+.minimal-footer {
+  background-color: #f8f9fa; /* Color de fondo por si la imagen no carga */
+  padding: 80px 20px; /* Ajusta el padding para que el texto esté dentro de las olas */
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.62),
+    rgba(10, 104, 255, 0.294)
+  ); /* Cambia a tu imagen de ola */
+  background-size: contain; /* O especifica un tamaño fijo */
+  background-position: bottom center; /* Asegúrate de que la ola esté visible */
+  background-repeat: no-repeat;
+  overflow: hidden; /* Evita que el contenido sobresalga */
+}
+.responsive-icon {
+  font-size: 1vw; /* Ajusta el tamaño en función del ancho de la ventana */
+  color: #006eff;
+}
+.responsive-icon:hover {
+  /* Ajusta el tamaño en función del ancho de la ventana */
+  color: #029c92;
+}
+
+@media (max-width: 768px) {
+  .responsive-icon {
+    font-size: 3vw; /* Aumenta el tamaño en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-icon {
+    font-size: 5vw; /* Ajusta el tamaño aún más en pantallas muy pequeñas */
+  }
+}
+
+.footer-content {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.columna {
+  flex: 1;
+  min-width: 100px;
+  margin: 0;
+  text-align: left;
+  padding: 20px; /* Espaciado adicional */
+}
+
+.columna2 {
+  flex: 1;
+  min-width: 100px;
+  margin: 0;
+  text-align: center;
+  padding: 20px;
+}
+
+.columna3 {
+  flex: 1;
+  min-width: 100px;
+  margin: 0;
+  text-align: left;
+  padding: 20px;
+}
+
+#footer {
+  font-size: 14px;
+  color: #333;
+}
+
+.footimg-container {
+  justify-content: flex-start;
+}
+
+.footimg {
+  max-width: 150px;
+  height: auto;
+  filter: drop-shadow(3px 5px 5px rgb(4, 20, 53));
+}
+
+a i {
+  color: #113886; /* Color azul de Facebook */
+}
+
+a i:hover {
+  color: #300073; /* Oscurecer al pasar el cursor */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footimg-container {
+    justify-content: center; /* Centra la imagen en pantallas pequeñas */
+  }
+
+  .columna .columna2 .columna3 {
+    text-align: center;
+  }
+}
+/* Estilo para el párrafo y el icono */
+.mail,
+.mail i {
+  color: white;
+}
+
+/* Estilo para el enlace */
+.mail a {
+  color: white;
+  text-decoration: none; /* Quita el subrayado predeterminado */
+  position: relative; /* Necesario para el ::after */
+}
+
+/* Efecto hover animado del subrayado */
+.mail a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px; /* Ajusta la posición del subrayado */
+  height: 2px;
+  background-color: #ffcc00; /* Color del subrayado */
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+/*ajustes del div de la tabla*/
+.table-responsive {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  word-wrap: break-word; /* Para que el texto largo se divida en varias líneas */
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+.header {
+  background-color: #ffcccc; /* Color de encabezado */
+}
+
+.table-responsive {
+  background-color: #cce5ff; /* Color de contenido */
+}
+/* Div de textos */
+#cierre {
+  width: 60%; /* Hace que el div ocupe el 40% del ancho de la pantalla */
+  margin: 0 auto; /* Centra el div horizontalmente */
+  text-align: justify; /* Centra el texto dentro del div */
+  font-family: "Arial", sans-serif; /* Fuente para el texto */
+  font-size: clamp(1.5em, 1vw, 2em);
+  color: #333; /* Color del texto */
+  padding: 20px 0; /* Espaciado interno arriba y abajo */
+}
+#horarios {
+  width: 100%; /* Hace que el div ocupe el 40% del ancho de la pantalla */
+  font-family: "Arial", sans-serif; /* Fuente para el texto */
+  font-size: clamp(1.5em, 1vw, 2em);
+  color: #333; /* Color del texto */
+}
+.uno {
+  width: 60%; /* Hace que el div ocupe el 40% del ancho de la pantalla */
+  margin: 0 auto; /* Centra el div horizontalmente */
+  text-align: justify; /* Centra el texto dentro del div */
+  font-family: "Arial", sans-serif; /* Fuente para el texto */
+  font-size: clamp(1.5em, 1vw, 2em);
+  color: #333; /* Color del texto */
+  padding: 20px 0; /* Espaciado interno arriba y abajo */
+  align-items: center;
+  text-align: center;
+}
+
+.linea {
+  border: 0;
+  height: 2px;
+  background-color: #dbd801; /* Color de la línea */
+  margin: 20px 0; /* Espaciado entre la línea y el texto */
+}
+.boton {
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 125, 255, 0),
+    rgba(255, 255, 255, 0.21),
+    rgba(0, 255, 204, 0),
+    rgba(10, 10, 10, 0.305)
+  );
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  white-space: nowrap;
+  width: 100%; /* Ancho responsivo */
+  max-width: 350px; /* Ancho máximo */
+  font-size: 1.2rem; /* Tamaño de texto relativo */
+}
+
+.boton:hover {
+  background-color: #3162f3;
+}
+
+.boton2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #65b5ff;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  margin: 5px 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 100%; /* Ancho responsivo */
+  max-width: 150px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  font-size: 1.2rem; /* Tamaño de texto relativo */
+  word-wrap: break-word;
+}
+
+.boton2:hover {
+  background-color: #8efec8;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .boton {
+    padding: 8px 16px;
+    max-width: 100%;
+    font-size: 1rem; /* Reducir tamaño de texto en pantallas pequeñas */
+  }
+
+  .boton2 {
+    padding: 8px 16px;
+    max-width: 100px;
+    font-size: 1rem; /* Reducir tamaño de texto en pantallas pequeñas */
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .boton,
+  .boton2 {
+    font-size: 0.9rem; /* Reducir aún más el tamaño del texto */
+  }
+}
+
+#recursos {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
